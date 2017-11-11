@@ -54,14 +54,15 @@ public:
     IGUIControlBlock* _parent;
     std::vector <IGUIControlBlock*> _children;
     // there must always be a docking style for any GUI control block
-    DockStyle _docking; // TODO: dock or docking?
+    DockStyle _dock;
 };
 
-class IWindow {
+class IWindow : IMouseEventControl, IKeyboardEventControl {
 protected:
     coord_t width, height;
     coord_t xLocation, yLocation;
     IGUIControlBlock _main_panel; // there must always be a main panel attached!
+                                  // TODO: is this a smart design decision?
 public:
     virtual void OnResize(coord_t width, coord_t height) = 0;
     virtual void OnMove(coord_t x, coord_t y) = 0; // pixel coordinates
