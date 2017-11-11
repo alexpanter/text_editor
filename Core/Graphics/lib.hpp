@@ -51,17 +51,17 @@ public:
 class IGUIControlBlock { // TODO: devise a better name.
 public:
     // TODO: define common properties for window, panels, text boxes, buttons, etc.
-    GUIControlBlock* _parent;
-    std::vector <GUIControlBlock*> _children;
+    IGUIControlBlock* _parent;
+    std::vector <IGUIControlBlock*> _children;
     // there must always be a docking style for any GUI control block
     DockStyle _docking; // TODO: dock or docking?
 };
 
 class IWindow {
 protected:
-    unsigned int width, height;
-    unsigned int xLocation, yLocation;
-    GUIControlBlock _main_panel; // there must always be a main panel attached!
+    coord_t width, height;
+    coord_t xLocation, yLocation;
+    IGUIControlBlock _main_panel; // there must always be a main panel attached!
 public:
     virtual void OnResize(coord_t width, coord_t height) = 0;
     virtual void OnMove(coord_t x, coord_t y) = 0; // pixel coordinates
@@ -73,13 +73,13 @@ public:
 class IPanel {
 protected:
     IWindow* _window; // TODO: do we need this reference?
-    GUIControlBlock _control;
+    IGUIControlBlock _control;
 };
 class ITextBox {
 protected:
-    GUIControlBlock _control;
+    IGUIControlBlock _control;
 };
 class IButton {
 protected:
-    GUIControlBlock _control;
+    IGUIControlBlock _control;
 };
