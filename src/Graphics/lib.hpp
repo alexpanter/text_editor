@@ -9,6 +9,10 @@
 
 #include <vector>
 
+namespace Graphics
+{
+
+
 // TODO: should screen coordinates be used in normalized coordinates instead of pixels?
 typedef coord_t unsigned int;
 
@@ -84,3 +88,7 @@ class IButton {
 protected:
     IGUIControlBlock _control;
 };
+
+
+
+} // namespace Graphics
